@@ -1,2 +1,2 @@
 # hotelbyte-android-wallet
-Hotelbyte coin wallet for android
+The official hotelbyte foundation Android Wallet App
