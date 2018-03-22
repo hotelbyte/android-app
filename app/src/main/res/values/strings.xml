@@ -1,0 +1,82 @@
+<resources>
+    <!-- Global -->
+    <string name="app_name">Hotel Wallet</string>
+    <string name="coin_name">HotelCoin</string>
+    <string name="coin_alias">HBF</string>
+
+    <!-- Main -->
+    <string name="exit_confirmation">Press Back One More Time To Exit</string>
+    <string name="fab_gen_new">Generate New Wallet</string>
+    <string name="fab_send">Send</string>
+    <string name="generate_text">You are about to generate a new and encrypted offline wallet on this device. We recommend choosing a strong password in order to be able to ensure the best security possible for your funds. Please note that generating a strong and secure wallet is a highly compute-intensive task that can take up to several minutes! This process will be performed in the background so you can still use your phone as you usually would in the meantime. The progress is displayed in the notification bar of your device and as soon as we have finished generating your wallet, we will let you know.</string>
+
+    <!-- Wallet Gen -->
+    <string name="prompt_password">Password</string>
+    <string name="prompt_password_confirm">Confirm Password</string>
+    <string name="action_sign_in">Generate</string>
+
+    <string name="error_invalid_password">This password is too short (Min: 9)</string>
+    <string name="error_secure_password">Must contain a minimum of 1 lower case letter, 1 upper case letter and 1 numeric character</string>
+    <string name="error_invalid_input">The input is null</string>
+    <string name="error_invalid_amount">Invalid amount format</string>
+    <string name="error_incorrect_password">Passwords do not match</string>
+    <string name="error_not_enough_balance">Not enough balance.</string>
+    <string name="error_not_enough_balance_max">Available balance are</string>
+
+    <string name="dialog_write_down_pw_title">Important!</string>
+    <string name="dialog_write_down_pw_text">Hotel Wallet will encrypt your Wallet with the password your provided to keep your HotelCoin\'s safe. Your password is literally the only way to unlock your wallet and spend your HotelCoin\'s, so make sure you don\'t forget it! We suggest to write it down on a piece of paper.</string>
+    <string name="dialog_back_button">Cancel</string>
+
+    <string name="wallet_one_at_a_time">Not So Fast</string>
+    <string name="wallet_creation_one_at_a_time_text">We are currently generating a wallet for you, you can see the progress in your notification bar. Don\'t worry, we will notify you as soon as your wallet generation is finished :-) If you really wish to generate another one please wait for the current wallet to be completed first.</string>
+    <string name="wallet_deletion_one_at_a_time_text">We are currently deleting a wallet for you. Don\'t worry, we will notify you as soon as your wallet deletion is finished :-)</string>
+    <string name="button_ok">OK</string>
+
+    <!-- Wallet gen notification -->
+
+    <string name="notification_wallgen_title">Generating Wallet…</string>
+    <string name="notification_wallgen_finished">Wallet Creation Finished!</string>
+    <string name="wallet_gen_service_title">Generating New Wallet</string>
+    <string name="notification_click_to_view">Click to view</string>
+    <string name="notification_wallgen_maytake">This may take a couple minutes</string>
+
+    <!-- Wallet Transfer -->
+    <string name="to_address">To Address</string>
+    <string name="from_address">From Address</string>
+    <string name="action_transfer">Transfer</string>
+    <string name="prompt_amount">Amount</string>
+
+    <string name="password_in_clear_text">Show Password in clear text</string>
+    <string name="notification_transferingticker">Transferring HotelCoin…</string>
+    <string name="notification_transfering_title">Transferring HotelCoin</string>
+    <string name="notification_might_take_a_minute">This might take a minute</string>
+
+    <string name="notification_transfersuc">Transfer successful</string>
+    <string name="notification_transferfail">Transfer Failed</string>
+
+    <!-- Wallet Detail -->
+
+    <string name="notification_transfer_received">Transaction received!</string>
+    <string name="detail_transaction_count">Transactions: </string>
+    <string name="detail_copy_clipboard_action">Text has been copied to clipboard.</string>
+
+    <!-- Transaction Detail -->
+
+    <string name="activity_send_title">Transaction Detail</string>
+    <string name="timestamp">Timestamp</string>
+    <string name="block_confirmations">Confirmations</string>
+    <string name="block_height">Block</string>
+    <string name="gas_used">Gas Used</string>
+    <string name="gas_price">Gas Price</string>
+    <string name="nonce">Nonce</string>
+    <string name="tx_cost">TX Cost</string>
+    <string name="open_in_browser">Open in Browser</string>
+
+    <!-- Wallet popup menu -->
+    <string name="wallet_popup_edit_name">Edit name</string>
+    <string name="wallet_popup_backup">Backup</string>
+    <string name="wallet_popup_delete">Delete</string>
+    <string name="wallet_popup_delete_prompt">Type password for security</string>
+    <string name="wallet_popup_delete_prompt_progress">Deletion in progress...</string>
+    <string name="wallet_popup_delete_prompt_deleted">Wallet deleted!</string>
+</resources>

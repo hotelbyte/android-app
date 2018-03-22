@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/wallet_popup_edit_name"
+        android:title="@string/wallet_popup_edit_name" />
+    <item
+        android:id="@+id/wallet_popup_backup"
+        android:title="@string/wallet_popup_backup" />
+    <item
+        android:id="@+id/wallet_popup_delete"
+        android:title="@string/wallet_popup_delete" />
+</menu>
