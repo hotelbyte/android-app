@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="25dp">
+
+    <ImageView
+        android:id="@+id/slideImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="29dp"
+        app:layout_constraintBottom_toTopOf="@+id/slideBodyText"
+        app:layout_constraintEnd_toStartOf="@+id/slideBodyText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/slideBodyText"
+        app:srcCompat="@drawable/slide_icon_01" />
+
+    <TextView
+        android:id="@+id/slideHeadingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/slide_header_default"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/slideBodyText"
+        app:layout_constraintEnd_toEndOf="@+id/slideBodyText"
+        app:layout_constraintStart_toStartOf="@+id/slideBodyText" />
+
+    <TextView
+        android:id="@+id/slideBodyText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="118dp"
+        android:layout_marginEnd="138dp"
+        android:padding="20dp"
+        android:text="@string/slide_body_default"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/slideImageView" />
+
+</android.support.constraint.ConstraintLayout>

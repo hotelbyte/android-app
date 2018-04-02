@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/fragment_wallet_list_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <android.support.v7.widget.RecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/list"
+            android:name="org.hotelbyte.app.WalletFragment"
+            android:layout_width="0dp"
+            android:layout_height="345dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:visibility="invisible"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            app:layout_constraintVertical_bias="1.0"
+            tools:context="org.hotelbyte.app.wallet.WalletFragment"
+            tools:listitem="@layout/fragment_wallet" />
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/fab_wallet_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/list"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            app:layout_constraintVertical_bias="1.0"
+            fab:menu_animationDelayPerItem="20"
+            fab:menu_colorNormal="@color/colorPrimary"
+            fab:menu_colorPressed="@color/colorAccent"
+            fab:menu_colorRipple="@color/colorAccent"
+            fab:menu_shadowColor="#444">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/gen_wallet_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_add_wallet"
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorAccent"
+                app:fab_colorRipple="@color/colorAccent"
+                fab:fab_label="@string/fab_gen_new"
+                fab:menu_colorNormal="@color/colorPrimary"
+                fab:menu_colorPressed="@color/colorAccent"
+                fab:menu_colorRipple="@color/colorAccent" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/send_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_new_tr"
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorAccent"
+                app:fab_colorRipple="@color/colorAccent"
+                fab:fab_label="@string/fab_send"
+                fab:menu_colorNormal="@color/colorPrimary"
+                fab:menu_colorPressed="@color/colorAccent"
+                fab:menu_colorRipple="@color/colorAccent" />
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="131dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/fab_wallet_menu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside">
+
+        </RelativeLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.v4.widget.SwipeRefreshLayout>

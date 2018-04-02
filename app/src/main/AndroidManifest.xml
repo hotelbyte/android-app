@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.hotelbyte.wallet">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.hotelbyte.app">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,7 +16,6 @@
 
     <!-- Used for optional Applock Feature -->
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -43,7 +43,7 @@
         android:required="false" />
 
     <application
-        android:name="org.hotelbyte.wallet.base.BaseApplication"
+        android:name=".base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -52,34 +52,48 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- Main activities -->
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.hotelbyte.wallet.MainActivity"
+            android:name=".onboarding.OnBoardingActivity"
             android:launchMode="singleTask" />
-        <activity android:name="org.hotelbyte.wallet.WalletGenActivity" />
-        <activity android:name="org.hotelbyte.wallet.TransactionActivity" />
+        <activity
+            android:name=".MainActivity" />
 
+        <!-- Jobs -->
         <service
-            android:name="org.hotelbyte.wallet.service.WalletGenService"
-            android:exported="false" />
-        <service
-            android:name="org.hotelbyte.wallet.service.TransactionService"
-            android:exported="false" />
-
-        <activity android:name="org.hotelbyte.wallet.WalletDetailActivity" />
-        <activity android:name="org.hotelbyte.wallet.TransactionDetailActivity" />
-
-        <service
-            android:name="org.hotelbyte.wallet.jobs.JobSchedulerService"
+            android:name=".jobs.JobSchedulerService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <!-- Notifications -->
+        <service android:name=".notification.FirebaseIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".notification.MessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            tools:replace="android:value"
+            android:value="899e8e903a5ec29e035bdad0ab5c60765b7dda16" />
+
     </application>
 
 </manifest>

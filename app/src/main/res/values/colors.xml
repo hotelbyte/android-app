@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#587699</color>
-    <color name="colorPrimaryDark">#49627e</color>
-    <color name="colorAccent">#535353</color>
-    <color name="colorAccent2">#9cacbf</color>
+    <color name="colorPrimary">#03a9f4</color>
+    <color name="colorPrimaryLight">#67daff</color>
+    <color name="colorPrimaryDark">#007ac1</color>
+    <color name="colorSecondary">#1565c0</color>
+    <color name="colorSecondaryLightC">#5e92f3</color>
+    <color name="colorSecondaryDark">#003c8f</color>
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorSecondaryText">#ffffff</color>
+    <color name="colorAccent">#1565c0</color>
 
     <!-- Transaction detail -->
     <color name="transactionIncoming">#d22a8031</color>
@@ -11,4 +16,18 @@
     <color name="normalBlack">#222222</color>
     <color name="unconfirmed">#b6b6b6</color>
     <color name="unconfirmedNew">#a3a3a3</color>
+
+    <!-- Slide colors -->
+    <color name="transparentWhite">#cccccc</color>
+    <color name="white">#ffffff</color>
+
+
+
+    <color name="material_blue_500">#2196F3</color>
+    <color name="material_blue_700">#1976D2</color>
+
+    <color name="material_deep_purple_500">#673AB7</color>
+    <color name="material_deep_purple_a200">#7C4DFF</color>
+
+    <color name="material_lime_a200">#EEFF41</color>
 </resources>

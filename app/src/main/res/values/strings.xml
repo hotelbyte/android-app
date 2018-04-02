@@ -1,14 +1,28 @@
 <resources>
     <!-- Global -->
-    <string name="app_name">Hotel Wallet</string>
-    <string name="coin_name">HotelCoin</string>
+    <string name="app_name">Hotelbyte App</string>
+    <string name="coin_name">Hotelcoin</string>
     <string name="coin_alias">HBF</string>
 
     <!-- Main -->
     <string name="exit_confirmation">Press Back One More Time To Exit</string>
-    <string name="fab_gen_new">Generate New Wallet</string>
+    <string name="fab_gen_new">Create New Wallet</string>
+    <string name="fab_import_wallet">Import Wallet</string>
     <string name="fab_send">Send</string>
     <string name="generate_text">You are about to generate a new and encrypted offline wallet on this device. We recommend choosing a strong password in order to be able to ensure the best security possible for your funds. Please note that generating a strong and secure wallet is a highly compute-intensive task that can take up to several minutes! This process will be performed in the background so you can still use your phone as you usually would in the meantime. The progress is displayed in the notification bar of your device and as soon as we have finished generating your wallet, we will let you know.</string>
+    <string name="fab_welcome_title">Hello Hotelbyter!</string>
+    <string name="fab_welcome_text">You need a main account to use the Hotelbyte App, for that create a new wallet or import an existent one</string>
+    <string name="fab_welcome_end">Enjoy your hotel experience!</string>
+
+    <!-- Drawer menu -->
+    <string name="menu_wallet_title">Wallet</string>
+    <string name="menu_profile_title">Profile</string>
+    <string name="menu_share_title">Share</string>
+    <string name="menu_communications_title">Share your experience</string>
+
+    <!-- Wallet Home -->
+    <string name="wallet_home_welcome_title">Create your first account</string>
+    <string name="wallet_home_welcome_body">Tap the button to start creating or importing your first account</string>
 
     <!-- Wallet Gen -->
     <string name="prompt_password">Password</string>
@@ -79,4 +93,36 @@
     <string name="wallet_popup_delete_prompt">Type password for security</string>
     <string name="wallet_popup_delete_prompt_progress">Deletion in progress...</string>
     <string name="wallet_popup_delete_prompt_deleted">Wallet deleted!</string>
+
+    <!-- Slide layout -->
+    <string name="slide_header_default">HEADER</string>
+    <string name="slide_body_default">Lorem ipsum folder beuh anajne sdel</string>
+    <string name="btn_sign_in_google">Sign in with Google</string>
+    <string name="btn_sign_in_phone">Sign in with phone</string>
+
+    <string name="slide_header_one">NEW HOTELS EXPERIENCE</string>
+    <string name="slide_body_one">Evolve your bored hotel bookings experience to hotel smart bookings.</string>
+    <string name="slide_header_two">ENJOY AND WIN PRIZES</string>
+    <string name="slide_body_two">Win hotel bookings, hotelcoins or accessories using the mobile app.</string>
+    <string name="slide_header_three">THE WORLD\'S FIRST</string>
+    <string name="slide_body_three">The world\'s first Blockchain project that have focus on the <b>hoteliers</b> and <b>guests</b>.</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Log out</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Vertical Stepper View Sample Item -->
+    <string name="content_step_0">This is the first step. Click OK button to next step.\n\nTest Message.</string>
+    <string name="content_step_1">This is the second step. Click OK button to next step or Cancel button to previous step.\n\nThe summary text of each step is optional. If you haven\'t set, summary view won\'t be displayed.</string>
+    <string name="content_step_2">This is the last step. You can finish steps now.</string>
+
+    <string name="toggle_animation_button">Toggle Animation</string>
+
 </resources>
