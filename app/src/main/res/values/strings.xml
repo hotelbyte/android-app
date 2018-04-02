@@ -9,7 +9,6 @@
     <string name="fab_gen_new">Create New Wallet</string>
     <string name="fab_import_wallet">Import Wallet</string>
     <string name="fab_send">Send</string>
-    <string name="generate_text">You are about to generate a new and encrypted offline wallet on this device. We recommend choosing a strong password in order to be able to ensure the best security possible for your funds. Please note that generating a strong and secure wallet is a highly compute-intensive task that can take up to several minutes! This process will be performed in the background so you can still use your phone as you usually would in the meantime. The progress is displayed in the notification bar of your device and as soon as we have finished generating your wallet, we will let you know.</string>
     <string name="fab_welcome_title">Hello Hotelbyter!</string>
     <string name="fab_welcome_text">You need a main account to use the Hotelbyte App, for that create a new wallet or import an existent one</string>
     <string name="fab_welcome_end">Enjoy your hotel experience!</string>
@@ -25,6 +24,9 @@
     <string name="wallet_home_welcome_body">Tap the button to start creating or importing your first account</string>
 
     <!-- Wallet Gen -->
+    <string name="wallet_generate_warn_title">Generate a new encrypted wallet</string>
+    <string name="wallet_generate_warn_msg">Choose a strong password. This process will be performed in the background so you can still use your phone as you usually would in the meantime.
+        The progress is displayed in the notification bar of your device and as soon as we have finished generating your wallet, we will let you know.</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_password_confirm">Confirm Password</string>
     <string name="action_sign_in">Generate</string>
@@ -119,8 +121,11 @@
 
 
     <!-- Vertical Stepper View Sample Item -->
-    <string name="content_step_0">This is the first step. Click OK button to next step.\n\nTest Message.</string>
-    <string name="content_step_1">This is the second step. Click OK button to next step or Cancel button to previous step.\n\nThe summary text of each step is optional. If you haven\'t set, summary view won\'t be displayed.</string>
+    <string name="title_step_0">Wallet name</string>
+    <string name="title_step_1">Create a strong password</string>
+    <string name="title_step_2"></string>
+    <string name="content_step_0">Choose a name for your wallet.</string>
+    <string name="content_step_1">Create a strong password</string>
     <string name="content_step_2">This is the last step. You can finish steps now.</string>
 
     <string name="toggle_animation_button">Toggle Animation</string>

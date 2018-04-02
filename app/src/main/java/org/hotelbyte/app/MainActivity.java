@@ -1,6 +1,10 @@
 package org.hotelbyte.app;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,8 +12,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.transition.Fade;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,10 +23,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.hotelbyte.app.base.BaseAppCompatActivity;
+import org.hotelbyte.app.onboarding.OnBoardingActivity;
 import org.hotelbyte.app.wallet.AccountBean;
 import org.hotelbyte.app.wallet.VerticalStepperAdapterDemoFragment;
 import org.hotelbyte.app.wallet.VerticalStepperDemoFragment;
 import org.hotelbyte.app.wallet.WalletFragment;
+
+import java.io.InputStream;
 
 public class MainActivity extends BaseAppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, WalletFragment.OnListFragmentInteractionListener {
@@ -49,6 +58,11 @@ public class MainActivity extends BaseAppCompatActivity
             username.setText(user.getDisplayName());
             TextView email = navigationView.getHeaderView(0).findViewById(R.id.nav_email_text);
             email.setText(user.getEmail());
+
+            if (user.getPhotoUrl() != null) {
+                new DownloadImageTask((navigationView.getHeaderView(0).findViewById(R.id.nav_image_profile)))
+                        .execute(user.getPhotoUrl().toString());
+            }
         }
 
         // By default open wallet view
@@ -85,6 +99,9 @@ public class MainActivity extends BaseAppCompatActivity
             return true;
         } else if (id == R.id.action_logout) {
             FirebaseAuth.getInstance().signOut();
+            Intent ongoingIntent = new Intent(MainActivity.this, OnBoardingActivity.class);
+            startActivity(ongoingIntent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -119,5 +136,31 @@ public class MainActivity extends BaseAppCompatActivity
     @Override
     public void onListFragmentInteraction(AccountBean item) {
 
+    }
+
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String url = urls[0];
+            Bitmap mImage = null;
+            try {
+                InputStream in = new java.net.URL(url).openStream();
+                mImage = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mImage;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 }
