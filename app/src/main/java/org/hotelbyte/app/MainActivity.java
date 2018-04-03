@@ -16,7 +16,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,8 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import org.hotelbyte.app.base.BaseAppCompatActivity;
 import org.hotelbyte.app.onboarding.OnBoardingActivity;
 import org.hotelbyte.app.wallet.AccountBean;
-import org.hotelbyte.app.wallet.VerticalStepperAdapterDemoFragment;
-import org.hotelbyte.app.wallet.VerticalStepperDemoFragment;
+import org.hotelbyte.app.wallet.StepperNewWalletFragment;
 import org.hotelbyte.app.wallet.WalletFragment;
 
 import java.io.InputStream;
@@ -131,6 +129,11 @@ public class MainActivity extends BaseAppCompatActivity
                 .addTarget(R.id.fragment_wallet_list_constraint_layout));
         getFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, walletFragment).commit();
+    }
+
+    public void showCreateAccount() {
+        Fragment mVerticalStepperDemoFragment = new StepperNewWalletFragment();
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, mVerticalStepperDemoFragment).commit();
     }
 
     @Override

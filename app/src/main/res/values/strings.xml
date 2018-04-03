@@ -120,13 +120,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <!-- Vertical Stepper View Sample Item -->
+    <!-- New wallet generation vertical stepper  -->
     <string name="title_step_0">Wallet name</string>
     <string name="title_step_1">Create a strong password</string>
     <string name="title_step_2"></string>
     <string name="content_step_0">Choose a name for your wallet.</string>
     <string name="content_step_1">Create a strong password</string>
     <string name="content_step_2">This is the last step. You can finish steps now.</string>
+    <string name="step_0_warn_00">Provide a wallet name please</string>
+    <string name="step_0_warn_01">Minimum name length is 4 characters</string>
 
     <string name="toggle_animation_button">Toggle Animation</string>
 

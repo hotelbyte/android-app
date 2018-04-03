@@ -1,5 +1,6 @@
 package org.hotelbyte.app.wallet;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
+import org.hotelbyte.app.MainActivity;
 import org.hotelbyte.app.R;
 import org.hotelbyte.app.settings.Settings;
 
@@ -164,22 +166,17 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         Log.d("tag1", "aaa");
 
+        MainActivity mainActivity = (MainActivity) getActivity();
         switch (view.getId()) {
             case R.id.gen_wallet_fab:
-                generateDialog();
                 fabmenu.close(true);
-                showCreateAccount();
+                mainActivity.showCreateAccount();
                 break;
             case R.id.send_fab:
                 //startActivityForResult(new Intent(MainActivity.this, TransactionActivity.class), TransactionActivity.REQUEST_CODE);
                 fabmenu.close(true);
                 break;
         }
-    }
-
-    private void showCreateAccount() {
-       Fragment mVerticalStepperDemoFragment = new VerticalStepperDemoFragment();
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container, mVerticalStepperDemoFragment).commit();
     }
 
     /**
