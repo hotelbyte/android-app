@@ -1,6 +1,7 @@
 package org.hotelbyte.app.util;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
@@ -16,28 +17,12 @@ import android.widget.LinearLayout;
 import org.hotelbyte.app.R;
 import org.hotelbyte.app.interfaces.PasswordDialogCallback;
 import org.hotelbyte.app.interfaces.SimpleStringCallback;
+import org.hotelbyte.app.wallet.NewWalletFragment;
+import org.hotelbyte.app.wallet.WalletFragment;
 
 public class DialogUtil {
 
-   /* public static void writeDownPassword(final WalletGenActivity c) {
-        AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= 24) { // Otherwise buttons on 7.0+ are nearly invisible
-            builder = new AlertDialog.Builder(c, R.style.AlertDialogTheme);
-        } else {
-            builder = new AlertDialog.Builder(c);
-        }
-        builder.setTitle(R.string.dialog_write_down_pw_title);
-        builder.setMessage(c.getString(R.string.dialog_write_down_pw_text));
-        builder.setPositiveButton(R.string.action_sign_in, (dialog, which) -> {
-            c.genWalletFile();
-            dialog.dismiss();
-        });
-        builder.setNegativeButton(R.string.dialog_back_button, (dialog, which) -> dialog.cancel());
-        builder.show();
-    }*/
-
-
-    public static void askForPasswordAndDecode(Activity ac, int title, final PasswordDialogCallback callback) {
+   public static void askForPasswordAndDecode(Activity ac, int title, final PasswordDialogCallback callback) {
         AlertDialog.Builder builder = new AlertDialog.Builder(ac, R.style.AlertDialogTheme);
         builder.setTitle(title);
 

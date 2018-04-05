@@ -2,6 +2,7 @@
 
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_new_wallet_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,6 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-30dp"
             android:fontFamily="sans-serif-medium"
             android:padding="20dp"
             android:text="@string/wallet_generate_warn_msg" />
@@ -35,20 +37,14 @@
             android:layout_marginTop="24dp"
             app:step_index="1"
             app:step_state="selected"
-            app:step_summary="Summarized if needed"
-            app:step_summary_done="Summarized if needed. Done"
-            app:step_title="@string/title_step_0">
+            app:step_title="@string/title_step_0"
+            app:step_show_summary_always="true"
+            app:step_summary="@string/step_0_summary">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/content_step_0" />
 
                 <EditText
                     android:id="@+id/wallet_name_text"
@@ -74,6 +70,7 @@
                         android:textColor="@android:color/white" />
 
                     <Button
+                        android:id="@+id/btn_back_to_wallet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -90,19 +87,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            app:step_show_summary_always="true"
+            app:step_summary="@string/step_1_summary"
             app:step_index="2"
             app:step_title="@string/title_step_1">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/content_step_1" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -155,25 +149,29 @@
                         android:layout_marginStart="8dp"
                         android:text="@android:string/cancel" />
 
-                    <Button
-                        android:id="@+id/button_test_error"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:backgroundTint="@color/material_red_500"
-                        android:text="Set Step 1 Error Text"
-                        android:textColor="@android:color/white" />
-
                 </LinearLayout>
 
             </LinearLayout>
 
         </moe.feng.common.stepperview.VerticalStepperItemView>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fab_gen_new" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_wallet_new"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fab_gen_new"
+                android:visibility="invisible" />
+        </LinearLayout>
 
     </LinearLayout>
 

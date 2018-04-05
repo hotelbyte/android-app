@@ -7,17 +7,11 @@
     <!-- Main -->
     <string name="exit_confirmation">Press Back One More Time To Exit</string>
     <string name="fab_gen_new">Create New Wallet</string>
-    <string name="fab_import_wallet">Import Wallet</string>
+
     <string name="fab_send">Send</string>
     <string name="fab_welcome_title">Hello Hotelbyter!</string>
     <string name="fab_welcome_text">You need a main account to use the Hotelbyte App, for that create a new wallet or import an existent one</string>
     <string name="fab_welcome_end">Enjoy your hotel experience!</string>
-
-    <!-- Drawer menu -->
-    <string name="menu_wallet_title">Wallet</string>
-    <string name="menu_profile_title">Profile</string>
-    <string name="menu_share_title">Share</string>
-    <string name="menu_communications_title">Share your experience</string>
 
     <!-- Wallet Home -->
     <string name="wallet_home_welcome_title">Create your first account</string>
@@ -120,16 +114,31 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+    <!-- Main menu -->
+    <string name="menu_wallet_title">Wallet</string>
+    <string name="menu_profile_title">Profile</string>
+    <string name="menu_share_title">Share</string>
+    <string name="menu_communications_title">Share your experience</string>
+
+    <!-- Wallet main fragment -->
+    <string name="fab_wallet_new_title">New wallet</string>
+    <string name="fab_wallet_import_title">Import a wallet</string>
+    <string name="fab_wallet_send_title">Send Hotelcoins</string>
+
     <!-- New wallet generation vertical stepper  -->
     <string name="title_step_0">Wallet name</string>
     <string name="title_step_1">Create a strong password</string>
     <string name="title_step_2"></string>
-    <string name="content_step_0">Choose a name for your wallet.</string>
-    <string name="content_step_1">Create a strong password</string>
     <string name="content_step_2">This is the last step. You can finish steps now.</string>
     <string name="step_0_warn_00">Provide a wallet name please</string>
     <string name="step_0_warn_01">Minimum name length is 4 characters</string>
-
+    <string name="step_1_warn_00">This password is too short (Min: 9)</string>
+    <string name="step_1_warn_01">Passwords do not match</string>
+    <string name="step_1_warn_02">Must contain a minimum of 1 lower case letter, 1 upper case letter and 1 numeric character</string>
+    <string name="step_done">. Done.</string>
+    <string name="step_0_summary">Choose a name for your wallet.</string>
+    <string name="step_1_summary">Minimum password length is 9.</string>
+    <string name="step_1_done">Strong password. Done.</string>
     <string name="toggle_animation_button">Toggle Animation</string>
 
 </resources>

@@ -89,6 +89,11 @@
             </intent-filter>
         </service>
 
+        <!-- Wallet services -->
+        <service
+            android:name="org.hotelbyte.app.wallet.WalletCreatorService"
+            android:exported="false" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             tools:replace="android:value"

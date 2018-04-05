@@ -1,6 +1,5 @@
 package org.hotelbyte.app.wallet;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
@@ -10,9 +9,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,14 +32,11 @@ import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
  */
 public class WalletFragment extends Fragment implements View.OnClickListener {
 
-    private FloatingActionButton genWalletFab;
-    private FloatingActionButton sendFab;
+    private FloatingActionButton mFabWalletNew;
+    private FloatingActionButton mFabWalletImport;
+    private FloatingActionButton mFabWalletSend;
     private FloatingActionMenu fabmenu;
 
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
     private WalletManager walletManager;
@@ -57,10 +52,10 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
     }
 
     // TODO: Customize parameter initialization
-    public static WalletFragment newInstance(int columnCount) {
+    public static WalletFragment newInstance(boolean fromBack) {
         WalletFragment fragment = new WalletFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        //args.putBoolean(FROM_BACK, fromBack);
         fragment.setArguments(args);
         return fragment;
     }
@@ -69,9 +64,6 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
         // Instantiate manager and adapter
         walletManager = WalletManager.getInstance(getContext(), getActivity());
         walletRecyclerViewAdapter = new WalletRecyclerViewAdapter(walletManager.getAccounts(), mListener, getContext());
@@ -83,13 +75,16 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
 
         // Set up view
-        View view = inflater.inflate(R.layout.fragment_wallet_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_wallet_main, container, false);
 
+        // Set up main floating button
         fabmenu = view.findViewById(R.id.fab_wallet_menu);
-        genWalletFab = view.findViewById(R.id.gen_wallet_fab);
-        sendFab = view.findViewById(R.id.send_fab);
-        genWalletFab.setOnClickListener(this);
-        sendFab.setOnClickListener(this);
+        mFabWalletNew = view.findViewById(R.id.fab_wallet_new);
+        mFabWalletImport = view.findViewById(R.id.fab_wallet_import);
+        mFabWalletSend = view.findViewById(R.id.fab_wallet_send);
+        mFabWalletNew.setOnClickListener(this);
+        mFabWalletImport.setOnClickListener(this);
+        mFabWalletSend.setOnClickListener(this);
 
         // Pass UI elements to wallet manager
         walletManager.setSwipeRefresh(view.findViewById(R.id.swipeRefresh));
@@ -104,11 +99,11 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
         // Set the adapter
         RecyclerView recyclerView = view.findViewById(R.id.list);
         Context context = view.getContext();
-        if (mColumnCount <= 1) {
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        } else {
-            recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-        }
+        //if (mColumnCount <= 1) {
+           // recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        //} else {
+            recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
+        //}
         recyclerView.setAdapter(new WalletRecyclerViewAdapter(walletManager.getAccounts(), mListener, context));
         walletRecyclerViewAdapter.notifyDataSetChanged();
     }
@@ -135,6 +130,54 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
         super.onStart();
 
         // We have already the view let's go to customize view with Wallet Manager data
+        openFocusEffect();
+
+        MainActivity mainActivity = (MainActivity) getActivity();
+        if (mainActivity.getSupportActionBar() != null) {
+            mainActivity.getSupportActionBar().setTitle(getString(R.string.menu_wallet_title));
+        }
+
+        mFabWalletSend.setEnabled(!walletManager.getAccounts().isEmpty());
+    }
+
+    @Override
+    public void onClick(View view) {
+        MainActivity mainActivity = (MainActivity) getActivity();
+        switch (view.getId()) {
+            case R.id.fab_wallet_new:
+                fabmenu.close(true);
+                mainActivity.showNewWallet();
+                break;
+            case R.id.fab_wallet_import:
+                fabmenu.close(true);
+                mainActivity.showImportWallet();
+                break;
+            case R.id.fab_wallet_send:
+                // TODO add send screen
+                fabmenu.close(true);
+                //mainActivity.showSendCoins();
+                break;
+
+            //startActivityForResult(new Intent(MainActivity.this, TransactionActivity.class), TransactionActivity.REQUEST_CODE);
+        }
+    }
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p/>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnListFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onListFragmentInteraction(AccountBean item);
+    }
+
+    private void openFocusEffect() {
         if (walletManager.getAccounts().isEmpty()) {
             // We don't have accounts on local
             mFabPrompt = new MaterialTapTargetPrompt.Builder(WalletFragment.this)
@@ -160,38 +203,6 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
                     })
                     .show();
         }
-    }
-
-    @Override
-    public void onClick(View view) {
-        Log.d("tag1", "aaa");
-
-        MainActivity mainActivity = (MainActivity) getActivity();
-        switch (view.getId()) {
-            case R.id.gen_wallet_fab:
-                fabmenu.close(true);
-                mainActivity.showCreateAccount();
-                break;
-            case R.id.send_fab:
-                //startActivityForResult(new Intent(MainActivity.this, TransactionActivity.class), TransactionActivity.REQUEST_CODE);
-                fabmenu.close(true);
-                break;
-        }
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(AccountBean item);
     }
 
     public void generateDialog() {

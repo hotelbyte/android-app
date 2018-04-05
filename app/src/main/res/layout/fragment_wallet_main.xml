@@ -34,7 +34,7 @@
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
             app:layout_constraintVertical_bias="1.0"
             tools:context="org.hotelbyte.app.wallet.WalletFragment"
-            tools:listitem="@layout/fragment_wallet" />
+            tools:listitem="@layout/fragment_wallet_item" />
 
         <com.github.clans.fab.FloatingActionMenu
             android:id="@+id/fab_wallet_menu"
@@ -55,27 +55,40 @@
             fab:menu_shadowColor="#444">
 
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/gen_wallet_fab"
+                android:id="@+id/fab_wallet_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_add_wallet"
                 app:fab_colorNormal="@color/colorPrimary"
                 app:fab_colorPressed="@color/colorAccent"
                 app:fab_colorRipple="@color/colorAccent"
-                fab:fab_label="@string/fab_gen_new"
+                fab:fab_label="@string/fab_wallet_new_title"
                 fab:menu_colorNormal="@color/colorPrimary"
                 fab:menu_colorPressed="@color/colorAccent"
                 fab:menu_colorRipple="@color/colorAccent" />
 
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/send_fab"
+                android:id="@+id/fab_wallet_import"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_attach_file_white"
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorAccent"
+                app:fab_colorRipple="@color/colorAccent"
+                fab:fab_label="@string/fab_wallet_import_title"
+                fab:menu_colorNormal="@color/colorPrimary"
+                fab:menu_colorPressed="@color/colorAccent"
+                fab:menu_colorRipple="@color/colorAccent" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_wallet_send"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_new_tr"
                 app:fab_colorNormal="@color/colorPrimary"
                 app:fab_colorPressed="@color/colorAccent"
                 app:fab_colorRipple="@color/colorAccent"
-                fab:fab_label="@string/fab_send"
+                fab:fab_label="@string/fab_wallet_send_title"
                 fab:menu_colorNormal="@color/colorPrimary"
                 fab:menu_colorPressed="@color/colorAccent"
                 fab:menu_colorRipple="@color/colorAccent" />

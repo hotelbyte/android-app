@@ -69,7 +69,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<WalletRecycl
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_wallet, parent, false);
+                .inflate(R.layout.fragment_wallet_item, parent, false);
         //return new ViewHolder(view);
 
         /*itemView.setOnClickListener(listener);
