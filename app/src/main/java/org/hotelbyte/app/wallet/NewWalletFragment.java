@@ -22,7 +22,6 @@ import org.hotelbyte.app.settings.Settings;
 
 import moe.feng.common.stepperview.VerticalStepperItemView;
 
-import static android.app.Activity.RESULT_OK;
 import static org.hotelbyte.app.settings.Constants.PARCEL_PARAM;
 
 public class NewWalletFragment extends Fragment {
@@ -31,6 +30,7 @@ public class NewWalletFragment extends Fragment {
 
     private VerticalStepperItemView mSteppers[] = new VerticalStepperItemView[3];
     private EditText mPassword;
+    private EditText mWalletName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -74,11 +74,11 @@ public class NewWalletFragment extends Fragment {
                 InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm != null) imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
-                EditText walletName = view.getRootView().findViewById(R.id.wallet_name_text);
-                if (walletName != null && walletName.getText() != null) {
-                    if (walletName.getText().length() > 3) {
+                mWalletName = view.getRootView().findViewById(R.id.wallet_name_text);
+                if (mWalletName != null && mWalletName.getText() != null) {
+                    if (mWalletName.getText().length() > 3) {
                         mSteppers[0].nextStep();
-                        mSteppers[0].setSummaryFinished(walletName.getText().toString() + getString(R.string.step_done));
+                        mSteppers[0].setSummaryFinished(mWalletName.getText().toString() + getString(R.string.step_done));
                     } else {
                         mSteppers[0].setErrorText(getString(R.string.step_0_warn_01));
                     }
@@ -167,7 +167,7 @@ public class NewWalletFragment extends Fragment {
     private void genWalletFile() {
         Settings.walletBeingGenerated = true; // Lock so a user can only generate one wallet at a time
         Intent data = new Intent();
-        data.putExtra(PARCEL_PARAM, new WalletGenParcel(mPassword.getText().toString().trim()));
+        data.putExtra(PARCEL_PARAM, new WalletGenParcel(mPassword.getText().toString().trim(), mWalletName.getText().toString().trim()));
         Intent generatingService = new Intent(getActivity(), WalletCreatorService.class);
         generatingService.putExtra(PARCEL_PARAM, (WalletGenParcel) data.getParcelableExtra(PARCEL_PARAM));
         getActivity().startService(generatingService);

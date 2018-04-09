@@ -15,38 +15,126 @@
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
-        <android.support.v7.widget.RecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/list"
-            android:name="org.hotelbyte.app.WalletFragment"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
-            android:layout_height="345dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="6dp"
-            android:visibility="invisible"
-            app:layoutManager="LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="102dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/wallet_list"
+            app:layout_constraintTop_toBottomOf="@+id/detail_wallet_main_constraint">
+
+            <TextView
+                android:id="@+id/detail_wallet_blocks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/detail_wallet_blocks"
+                app:layout_constraintBottom_toBottomOf="@+id/detail_wallet_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/detail_wallet_date" />
+
+            <TextView
+                android:id="@+id/detail_wallet_tx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="105dp"
+                android:text="@string/detail_wallet_tx"
+                app:layout_constraintBottom_toTopOf="@+id/detail_wallet_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/detail_wallet_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/detail_wallet_type"
+                app:layout_constraintBottom_toBottomOf="@+id/detail_wallet_tx"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/detail_wallet_tx"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/detail_wallet_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:text="@string/detail_wallet_date"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/detail_wallet_tx"
+                app:layout_constraintTop_toBottomOf="@+id/detail_wallet_tx" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/detail_wallet_main_constraint"
+            android:layout_width="0dp"
+            android:layout_height="94dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-            app:layout_constraintVertical_bias="1.0"
-            tools:context="org.hotelbyte.app.wallet.WalletFragment"
-            tools:listitem="@layout/fragment_wallet_item" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside">
+
+            <ImageView
+                android:id="@+id/detail_wallet_image"
+                android:layout_width="67dp"
+                android:layout_height="67dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/detail_wallet_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/detail_wallet_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="199dp"
+                android:layout_marginTop="16dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/detail_wallet_amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/detail_wallet_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/detail_wallet_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="37dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/detail_wallet_amount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/detail_wallet_image"
+                app:layout_constraintTop_toBottomOf="@+id/detail_wallet_name" />
+
+        </android.support.constraint.ConstraintLayout>
 
         <com.github.clans.fab.FloatingActionMenu
             android:id="@+id/fab_wallet_menu"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="366dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/list"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            app:layout_constraintEnd_toEndOf="@+id/wallet_list"
+            app:layout_constraintTop_toBottomOf="@+id/detail_wallet_main_constraint"
             app:layout_constraintVertical_bias="1.0"
             fab:menu_animationDelayPerItem="20"
             fab:menu_colorNormal="@color/colorPrimary"
@@ -95,22 +183,26 @@
 
         </com.github.clans.fab.FloatingActionMenu>
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/wallet_list"
+            android:name="org.hotelbyte.app.WalletFragment"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="131dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/fab_wallet_menu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread_inside">
+            android:layout_height="305dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            fab:layoutManager="LinearLayoutManager"
+            fab:layout_constraintBottom_toBottomOf="parent"
+            fab:layout_constraintEnd_toEndOf="parent"
+            fab:layout_constraintHorizontal_bias="1.0"
+            fab:layout_constraintStart_toStartOf="parent"
+            fab:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            fab:layout_constraintVertical_bias="1.0"
+            tools:context="org.hotelbyte.app.wallet.WalletFragment"
+            tools:listitem="@layout/fragment_wallet_item">
 
-        </RelativeLayout>
+        </android.support.v7.widget.RecyclerView>
 
     </android.support.constraint.ConstraintLayout>
 

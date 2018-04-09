@@ -53,12 +53,12 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<WalletRecycl
         public MyViewHolder(View view) {
             super(view);
             mView = view;
-            /*walletaddress = (AutofitTextView) view.findViewById(R.id.walletaddress);
-            walletname = (TextView) view.findViewById(R.id.from_address);
-            walletbalance = (TextView) view.findViewById(R.id.walletbalance);
-            addressimage = (ImageView) view.findViewById(R.id.addressimage);
-            type = (ImageView) view.findViewById(R.id.type);
-            container = (LinearLayout) view.findViewById(R.id.container);*/
+            walletaddress = view.findViewById(R.id.walletaddress);
+            walletname = view.findViewById(R.id.from_address);
+            walletbalance = view.findViewById(R.id.walletbalance);
+            addressimage = view.findViewById(R.id.addressimage);
+            type = view.findViewById(R.id.type);
+            container = view.findViewById(R.id.container);
         }
 
         public void clearAnimation() {
@@ -75,6 +75,8 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<WalletRecycl
         /*itemView.setOnClickListener(listener);
         itemView.setOnLongClickListener(longClickListener);
         itemView.setOnCreateContextMenuListener(contextMenuListener);*/
+
+
         return new MyViewHolder(view);
     }
 

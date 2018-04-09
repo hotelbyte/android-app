@@ -52,7 +52,6 @@ public class WalletManager {
         }
     }
 
-
     class BalanceAsyncTask extends AsyncTask<Void, Void, Boolean> {
         private Context context;
 

@@ -121,9 +121,16 @@
     <string name="menu_communications_title">Share your experience</string>
 
     <!-- Wallet main fragment -->
-    <string name="fab_wallet_new_title">New wallet</string>
-    <string name="fab_wallet_import_title">Import a wallet</string>
-    <string name="fab_wallet_send_title">Send Hotelcoins</string>
+        <!-- Float menu -->
+        <string name="fab_wallet_new_title">New wallet</string>
+        <string name="fab_wallet_import_title">Import a wallet</string>
+        <string name="fab_wallet_send_title">Send Hotelcoins</string>
+        <!-- Main detail -->
+        <string name="detail_wallet_blocks">Blocks Mined</string>
+        <string name="detail_wallet_tx">Transactions</string>
+        <string name="detail_wallet_type">Type</string>
+        <string name="detail_wallet_date">First seen</string>
+        <string name="detail_wallet_amount">Amount</string>
 
     <!-- New wallet generation vertical stepper  -->
     <string name="title_step_0">Wallet name</string>

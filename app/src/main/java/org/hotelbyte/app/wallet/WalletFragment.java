@@ -8,12 +8,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -21,6 +26,8 @@ import com.github.clans.fab.FloatingActionMenu;
 import org.hotelbyte.app.MainActivity;
 import org.hotelbyte.app.R;
 import org.hotelbyte.app.settings.Settings;
+import org.hotelbyte.app.util.Blockies;
+import org.w3c.dom.Text;
 
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
@@ -42,6 +49,14 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
     private WalletManager walletManager;
     private WalletRecyclerViewAdapter walletRecyclerViewAdapter;
     private MaterialTapTargetPrompt mFabPrompt;
+
+    private ImageView mImageWallet;
+    private TextView mWalletName;
+    private TextView mAmount;
+    private TextView mType;
+    private TextView mFirstSeen;
+    private TextView mBlocksMined;
+    private TextView mTxCount;
 
 
     /**
@@ -73,7 +88,6 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Set up view
         View view = inflater.inflate(R.layout.fragment_wallet_main, container, false);
 
@@ -92,19 +106,21 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
         // Async balance task before set up the recycler view
         walletManager.executeBalanceAsyncTask();
 
+        // Set UI elements for the main wallet
+        setDetailedBox(view);
         return view;
     }
 
     private void setupRecyclerView(View view) {
         // Set the adapter
-        RecyclerView recyclerView = view.findViewById(R.id.list);
-        Context context = view.getContext();
-        //if (mColumnCount <= 1) {
-           // recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        //} else {
-            recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
-        //}
-        recyclerView.setAdapter(new WalletRecyclerViewAdapter(walletManager.getAccounts(), mListener, context));
+        RecyclerView recyclerView = view.findViewById(R.id.wallet_list);
+        LinearLayoutManager mgr = new LinearLayoutManager(view.getContext());
+        recyclerView.setLayoutManager(mgr);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(walletRecyclerViewAdapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), mgr.getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
         walletRecyclerViewAdapter.notifyDataSetChanged();
     }
 
@@ -137,7 +153,21 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
             mainActivity.getSupportActionBar().setTitle(getString(R.string.menu_wallet_title));
         }
 
-        mFabWalletSend.setEnabled(!walletManager.getAccounts().isEmpty());
+        boolean hasAccounts = !walletManager.getAccounts().isEmpty();
+        mFabWalletSend.setEnabled(hasAccounts);
+        if (hasAccounts) {
+            // TODO get the main account!
+            AccountBean accountBean = walletManager.getAccounts().get(0);
+            mImageWallet.setImageBitmap(Blockies.createIcon(accountBean.getPublicKey()));
+            // TODO get wallet name
+            mWalletName.setText("Your wallet name");
+            // TODO create constant for HBF
+            if (accountBean.getBalance() > 0) {
+                mAmount.setText(accountBean.getBalance() + getString(R.string.coin_alias));
+            } else {
+                mAmount.setText("0 " + getString(R.string.coin_alias));
+            }
+        }
     }
 
     @Override
@@ -221,4 +251,16 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
             builder.show();
         }
     }
+
+    private void setDetailedBox(View view) {
+        mImageWallet = view.findViewById(R.id.detail_wallet_image);
+        mWalletName = view.findViewById(R.id.detail_wallet_name);
+      /*  mType = view.findViewById(R.id.detail_wallet_type);
+        mFirstSeen = view.findViewById(R.id.detail_wallet_date);
+        mBlocksMined = view.findViewById(R.id.detail_wallet_blocks);
+        mTxCount = view.findViewById(R.id.detail_wallet_tx);*/
+        mAmount = view.findViewById(R.id.detail_wallet_amount);
+    }
+
+
 }

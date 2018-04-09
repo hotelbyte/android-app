@@ -7,19 +7,22 @@ import android.os.Parcelable;
 
 public class WalletGenParcel implements Parcelable {
     private String password;
+    private String walletName;
 
-    public WalletGenParcel(String password) {
+    public WalletGenParcel(String password, String walletName) {
         this.password = password;
+        this.walletName = walletName;
     }
 
     public WalletGenParcel(Parcel in) {
         this.password = in.readString();
+        this.walletName = in.readString();
     }
-
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(getPassword());
+        dest.writeString(getWalletName());
     }
 
     @Override
@@ -42,5 +45,8 @@ public class WalletGenParcel implements Parcelable {
 
     public String getPassword() {
         return password;
+    }
+    public String getWalletName() {
+        return walletName;
     }
 }
