@@ -1,12 +1,15 @@
 package org.hotelbyte.app.wallet;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -90,7 +93,8 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<WalletRecycl
         String walletname = AddressNameStorage.getInstance(context).get(accountBean.getPublicKey());
         holder.walletname.setText(walletname == null ? "New Wallet" : walletname);
 
-        holder.addressimage.setImageBitmap(Blockies.createIcon(accountBean.getPublicKey()));
+        Bitmap walletIcon = Blockies.createIcon(accountBean.getPublicKey());
+        holder.addressimage.setImageBitmap(walletIcon);
         if (accountBean.getBalance() >= 0) {
             holder.walletbalance.setText(accountBean.getBalance() + " " + context.getString(R.string.coin_alias));
         }
@@ -105,6 +109,11 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<WalletRecycl
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
                     mListener.onListFragmentInteraction(accountBean);
+
+                    TextView walletNameTextView = holder.mView.getRootView().findViewById(R.id.detail_wallet_name);
+                    ImageView imageView = holder.mView.getRootView().findViewById(R.id.detail_wallet_image);
+                    walletNameTextView.setText(walletname);
+                    imageView.setImageBitmap(walletIcon);
                 }
             }
         });

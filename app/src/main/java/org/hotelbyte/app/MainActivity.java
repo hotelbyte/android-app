@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.transition.Fade;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -109,7 +110,6 @@ public class MainActivity extends BaseAppCompatActivity
 
     @Override
     public void onListFragmentInteraction(AccountBean item) {
-        // TODO
     }
 
     /**

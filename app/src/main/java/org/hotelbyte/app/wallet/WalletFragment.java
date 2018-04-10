@@ -132,6 +132,7 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
         recyclerView.setAdapter(walletRecyclerViewAdapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), mgr.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
+        MainActivity mainActivity = (MainActivity) getActivity();
 
         walletRecyclerViewAdapter.notifyDataSetChanged();
     }
@@ -214,7 +215,6 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(AccountBean item);
     }
 
@@ -266,13 +266,12 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
     private void setDetailedBox(View view) {
         mImageWallet = view.findViewById(R.id.detail_wallet_image);
         mWalletName = view.findViewById(R.id.detail_wallet_name);
-      /*  mType = view.findViewById(R.id.detail_wallet_type);
+        mType = view.findViewById(R.id.detail_wallet_type);
         mFirstSeen = view.findViewById(R.id.detail_wallet_date);
         mBlocksMined = view.findViewById(R.id.detail_wallet_blocks);
-        mTxCount = view.findViewById(R.id.detail_wallet_tx);*/
+        mTxCount = view.findViewById(R.id.detail_wallet_tx);
         mAmount = view.findViewById(R.id.detail_wallet_amount);
     }
-
 
     private void initTransactions() {
         Single.fromCallable(() -> web3JService.getCurrentBlockNumber())
