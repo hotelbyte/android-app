@@ -19,11 +19,10 @@
             android:id="@+id/wallet_list"
             android:name="org.hotelbyte.app.WalletFragment"
             android:layout_width="0dp"
-            android:layout_height="305dp"
+            android:layout_height="300dp"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             fab:layoutManager="LinearLayoutManager"
             fab:layout_constraintBottom_toBottomOf="parent"
             fab:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +38,7 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
-            android:layout_height="98dp"
+            android:layout_height="110dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -52,20 +51,19 @@
                 android:id="@+id/detail_wallet_blocks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/detail_wallet_blocks"
-                app:layout_constraintBottom_toBottomOf="@+id/detail_wallet_date"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/detail_wallet_date" />
+                app:layout_constraintTop_toBottomOf="@+id/detail_wallet_type" />
 
             <TextView
                 android:id="@+id/detail_wallet_tx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="105dp"
-                android:text="@string/detail_wallet_tx"
-                app:layout_constraintBottom_toTopOf="@+id/detail_wallet_date"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/detail_wallet_date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,22 +71,34 @@
                 android:id="@+id/detail_wallet_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/detail_wallet_type"
-                app:layout_constraintBottom_toBottomOf="@+id/detail_wallet_tx"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/detail_wallet_tx"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/detail_wallet_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:text="@string/detail_wallet_date"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="8dp"
+                android:text="@string/detail_wallet_tx"
                 app:layout_constraintStart_toStartOf="@+id/detail_wallet_tx"
                 app:layout_constraintTop_toBottomOf="@+id/detail_wallet_tx" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="191dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:text="View transactions"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_wallet_date"
+                app:layout_constraintVertical_bias="0.034" />
 
 
         </android.support.constraint.ConstraintLayout>
@@ -124,9 +134,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:layout_marginEnd="199dp"
+                android:layout_marginEnd="180dp"
                 android:layout_marginTop="16dp"
                 android:text="TextView"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/detail_wallet_amount"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/detail_wallet_image"
@@ -137,12 +148,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="37dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/detail_wallet_amount"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/detail_wallet_image"
+                app:layout_constraintStart_toStartOf="@+id/detail_wallet_name"
                 app:layout_constraintTop_toBottomOf="@+id/detail_wallet_name" />
 
         </android.support.constraint.ConstraintLayout>
