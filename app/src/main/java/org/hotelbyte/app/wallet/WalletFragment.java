@@ -25,10 +25,18 @@ import com.github.clans.fab.FloatingActionMenu;
 
 import org.hotelbyte.app.MainActivity;
 import org.hotelbyte.app.R;
+import org.hotelbyte.app.service.NetworkApiExplorerService;
+import org.hotelbyte.app.service.Web3jService;
 import org.hotelbyte.app.settings.Settings;
 import org.hotelbyte.app.util.Blockies;
 import org.w3c.dom.Text;
 
+import java.math.BigInteger;
+import java.util.Set;
+
+import rx.Single;
+import rx.SingleSubscriber;
+import rx.schedulers.Schedulers;
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
 /**
@@ -57,6 +65,8 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
     private TextView mFirstSeen;
     private TextView mBlocksMined;
     private TextView mTxCount;
+
+    private Web3jService web3JService;
 
 
     /**
@@ -108,6 +118,8 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
 
         // Set UI elements for the main wallet
         setDetailedBox(view);
+
+        web3JService = Web3jService.getInstance(getContext());
         return view;
     }
 
@@ -159,14 +171,13 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
             // TODO get the main account!
             AccountBean accountBean = walletManager.getAccounts().get(0);
             mImageWallet.setImageBitmap(Blockies.createIcon(accountBean.getPublicKey()));
-            // TODO get wallet name
-            mWalletName.setText("Your wallet name");
-            // TODO create constant for HBF
+            mWalletName.setText(accountBean.getName());
             if (accountBean.getBalance() > 0) {
                 mAmount.setText(accountBean.getBalance() + getString(R.string.coin_alias));
             } else {
                 mAmount.setText("0 " + getString(R.string.coin_alias));
             }
+            initTransactions();
         }
     }
 
@@ -263,4 +274,34 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
     }
 
 
+    private void initTransactions() {
+        Single.fromCallable(() -> web3JService.getCurrentBlockNumber())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new SingleSubscriber<BigInteger>() {
+                    @Override
+                    public void onSuccess(BigInteger currentBlock) {
+                        /*Set<String> storageTransactionHashSet = TransactionStorage.getInstance(WalletDetailActivity.this).get(walletDetailParcel.getAddress());
+                        if (storageTransactionHashSet != null) {
+                            fillTransactionInfo(storageTransactionHashSet, currentBlock);
+                        }*/
+                        // TODO get selected main account
+                        NetworkApiExplorerService.getInstance(getContext()).callTransactions(walletManager.getAccounts().get(0).getPublicKey(), (response) -> {
+                            if (response != null) {
+                                //fillTransactionInfo(response.keySet(), currentBlock);
+                                mTxCount.setText(getString(R.string.detail_transaction_count) + " " +  response.keySet().size());
+                            }
+                            getActivity().runOnUiThread(() -> walletManager.getSwipeRefresh().setRefreshing(false));
+                        }, (e) -> {
+                            e.printStackTrace();
+                            getActivity().runOnUiThread(() -> walletManager.getSwipeRefresh().setRefreshing(false));
+                        });
+                    }
+
+                    @Override
+                    public void onError(Throwable error) {
+                        error.printStackTrace();
+                        getActivity().runOnUiThread(() -> walletManager.getSwipeRefresh().setRefreshing(false));
+                    }
+                });
+    }
 }

@@ -128,7 +128,7 @@
         <!-- Main detail -->
         <string name="detail_wallet_blocks">Blocks Mined</string>
         <string name="detail_wallet_tx">Transactions</string>
-        <string name="detail_wallet_type">Type</string>
+        <string name="detail_wallet_type">Type Account</string>
         <string name="detail_wallet_date">First seen</string>
         <string name="detail_wallet_amount">Amount</string>
 

@@ -110,4 +110,8 @@ public class WalletManager {
     public void setSwipeRefresh(SwipeRefreshLayout swipeRefreshLayout) {
         this.swipeRefresh = swipeRefreshLayout;
     }
+
+    public SwipeRefreshLayout getSwipeRefresh() {
+        return swipeRefresh;
+    }
 }
