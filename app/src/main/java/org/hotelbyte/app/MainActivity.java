@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import org.hotelbyte.app.base.BaseAppCompatActivity;
 import org.hotelbyte.app.onboarding.OnBoardingActivity;
 import org.hotelbyte.app.parcels.WalletGenParcel;
+import org.hotelbyte.app.settings.SettingsFragment;
 import org.hotelbyte.app.util.ImageUtils;
 import org.hotelbyte.app.wallet.AccountBean;
 import org.hotelbyte.app.wallet.ImportWalletFragment;
@@ -65,9 +66,7 @@ public class MainActivity extends BaseAppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_logout) {
+        if (id == R.id.action_logout) {
             FirebaseAuth.getInstance().signOut();
             Intent ongoingIntent = new Intent(MainActivity.this, OnBoardingActivity.class);
             startActivity(ongoingIntent);
@@ -92,6 +91,8 @@ public class MainActivity extends BaseAppCompatActivity
             // showProfile();
         } else if (id == R.id.nav_share) {
             // showShareDialog();
+        } else if (id == R.id.nav_settings) {
+            showSettings();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -131,6 +132,10 @@ public class MainActivity extends BaseAppCompatActivity
      */
     public void showImportWallet() {
         showFragment(new ImportWalletFragment(), R.id.fragment_wallet_import_container);
+    }
+
+    private void showSettings() {
+        showFragment(new SettingsFragment(), R.id.fragment_settings_container);
     }
 
     /**

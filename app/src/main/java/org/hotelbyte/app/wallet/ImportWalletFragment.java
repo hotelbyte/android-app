@@ -7,32 +7,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.hotelbyte.app.BaseChildFragment;
 import org.hotelbyte.app.MainActivity;
 import org.hotelbyte.app.R;
 
 /**
  * Import a wallet file
  */
-public class ImportWalletFragment extends Fragment {
+public class ImportWalletFragment extends BaseChildFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wallet_import, parent, false);
 
-        MainActivity mainActivity = (MainActivity) getActivity();
-        if (mainActivity.getSupportActionBar() != null) {
-            mainActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            mainActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
-            mainActivity.getSupportActionBar().setTitle(null);
-        }
-
-        Toolbar toolbar = mainActivity.findViewById(R.id.toolbar);
+        Toolbar toolbar = prepareToolBar();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.showMainWallet();
                 MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.showMainWallet();
                 if (mainActivity.getSupportActionBar() != null) {
                     mainActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                     mainActivity.getSupportActionBar().setDisplayShowHomeEnabled(false);

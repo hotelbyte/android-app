@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.hotelbyte.app.BaseChildFragment;
 import org.hotelbyte.app.MainActivity;
 import org.hotelbyte.app.R;
 import org.hotelbyte.app.parcels.WalletGenParcel;
@@ -24,7 +25,7 @@ import moe.feng.common.stepperview.VerticalStepperItemView;
 
 import static org.hotelbyte.app.settings.Constants.PARCEL_PARAM;
 
-public class NewWalletFragment extends Fragment {
+public class NewWalletFragment extends BaseChildFragment {
 
     public static final int REQUEST_CODE = 401;
 
@@ -36,19 +37,12 @@ public class NewWalletFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wallet_new, parent, false);
 
-        MainActivity mainActivity = (MainActivity) getActivity();
-        if (mainActivity.getSupportActionBar() != null) {
-            mainActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            mainActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
-            mainActivity.getSupportActionBar().setTitle(null);
-        }
-
-        Toolbar toolbar = mainActivity.findViewById(R.id.toolbar);
+        Toolbar toolbar = prepareToolBar();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.showMainWallet();
                 MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.showMainWallet();
                 mainActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 mainActivity.getSupportActionBar().setDisplayShowHomeEnabled(false);
                 mainActivity.configureToolBar();
