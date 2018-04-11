@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import org.hotelbyte.app.base.BaseAppCompatActivity;
 import org.hotelbyte.app.onboarding.OnBoardingActivity;
 import org.hotelbyte.app.parcels.WalletGenParcel;
+import org.hotelbyte.app.profile.ProfileFragment;
 import org.hotelbyte.app.settings.SettingsFragment;
 import org.hotelbyte.app.util.ImageUtils;
 import org.hotelbyte.app.wallet.AccountBean;
@@ -88,7 +89,7 @@ public class MainActivity extends BaseAppCompatActivity
         if (id == R.id.nav_wallet) {
             showMainWallet();
         } else if (id == R.id.nav_profile) {
-            // showProfile();
+            showProfile();
         } else if (id == R.id.nav_share) {
             // showShareDialog();
         } else if (id == R.id.nav_settings) {
@@ -136,6 +137,13 @@ public class MainActivity extends BaseAppCompatActivity
 
     private void showSettings() {
         showFragment(new SettingsFragment());
+    }
+
+    /**
+     * Visible fragment to show from their child
+     */
+    public void showProfile() {
+        showAnimatedFragment(new ProfileFragment(), R.id.fragment_profile_container);
     }
 
     /**

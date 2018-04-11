@@ -1,13 +1,12 @@
 package org.hotelbyte.app.wallet;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.hotelbyte.app.BaseChildFragment;
+import org.hotelbyte.app.base.BaseChildFragment;
 import org.hotelbyte.app.MainActivity;
 import org.hotelbyte.app.R;
 

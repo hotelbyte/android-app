@@ -1,6 +1,5 @@
 package org.hotelbyte.app.wallet;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -15,7 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import org.hotelbyte.app.BaseChildFragment;
+import org.hotelbyte.app.base.BaseChildFragment;
 import org.hotelbyte.app.MainActivity;
 import org.hotelbyte.app.R;
 import org.hotelbyte.app.parcels.WalletGenParcel;

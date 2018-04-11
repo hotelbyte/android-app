@@ -1,7 +1,10 @@
-package org.hotelbyte.app;
+package org.hotelbyte.app.base;
 
 import android.app.Fragment;
 import android.support.v7.widget.Toolbar;
+
+import org.hotelbyte.app.MainActivity;
+import org.hotelbyte.app.R;
 
 /**
  * Created by lexfaraday
