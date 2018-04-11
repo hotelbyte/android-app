@@ -117,36 +117,44 @@ public class MainActivity extends BaseAppCompatActivity
      * Nav item fragment
      */
     public void showMainWallet() {
-        showFragment(WalletFragment.newInstance(false), R.id.fragment_wallet_list_constraint_layout);
+        showAnimatedFragment(WalletFragment.newInstance(false), R.id.fragment_wallet_list_constraint_layout);
     }
 
     /**
      * This fragment will be child of WalletFragment in terms of the navigation flow.
      */
     public void showNewWallet() {
-        showFragment(new NewWalletFragment(), R.id.fragment_new_wallet_container);
+        showAnimatedFragment(new NewWalletFragment(), R.id.fragment_new_wallet_container);
     }
 
     /**
      * This fragment will be child of WalletFragment in terms of the navigation flow.
      */
     public void showImportWallet() {
-        showFragment(new ImportWalletFragment(), R.id.fragment_wallet_import_container);
+        showAnimatedFragment(new ImportWalletFragment(), R.id.fragment_wallet_import_container);
     }
 
     private void showSettings() {
-        showFragment(new SettingsFragment(), R.id.fragment_settings_container);
+        showFragment(new SettingsFragment());
     }
 
     /**
-     * Generic method to show with animations fragments on main container
+     * Generic method to show fragments on main container
+     * @param fragment any fragment
+     */
+    private void showFragment(Fragment fragment) {
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+    }
+
+    /**
+     * Animated fragment transition
      * @param fragment any fragment
      * @param target top layout of the fragment
      */
-    private void showFragment(Fragment fragment, int target) {
+    private void showAnimatedFragment(Fragment fragment, int target) {
         fragment.setArguments(getIntent().getExtras());
         fragment.setEnterTransition(new Fade().addTarget(target));
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        showFragment(fragment);
     }
 
     /**
