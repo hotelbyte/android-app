@@ -6,14 +6,13 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +28,8 @@ import org.hotelbyte.app.service.NetworkApiExplorerService;
 import org.hotelbyte.app.service.Web3jService;
 import org.hotelbyte.app.settings.Settings;
 import org.hotelbyte.app.util.Blockies;
-import org.w3c.dom.Text;
 
 import java.math.BigInteger;
-import java.util.Set;
 
 import rx.Single;
 import rx.SingleSubscriber;
@@ -51,6 +48,9 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
     private FloatingActionButton mFabWalletImport;
     private FloatingActionButton mFabWalletSend;
     private FloatingActionMenu fabmenu;
+
+    private ConstraintLayout mWalletBalance;
+    private ConstraintLayout mWalletDetails;
 
     private OnListFragmentInteractionListener mListener;
 
@@ -110,6 +110,10 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
         mFabWalletImport.setOnClickListener(this);
         mFabWalletSend.setOnClickListener(this);
 
+        // UI parent elements
+        mWalletBalance = view.findViewById(R.id.wallet_balance_constraint);
+        mWalletDetails = view.findViewById(R.id.wallet_details_constraint);
+
         // Pass UI elements to wallet manager
         walletManager.setSwipeRefresh(view.findViewById(R.id.swipeRefresh));
         setupRecyclerView(view);
@@ -132,8 +136,6 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
         recyclerView.setAdapter(walletRecyclerViewAdapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), mgr.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
-        MainActivity mainActivity = (MainActivity) getActivity();
-
         walletRecyclerViewAdapter.notifyDataSetChanged();
     }
 
@@ -169,6 +171,10 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
         boolean hasAccounts = !walletManager.getAccounts().isEmpty();
         mFabWalletSend.setEnabled(hasAccounts);
         if (hasAccounts) {
+
+            mWalletBalance.setVisibility(View.VISIBLE);
+            mWalletDetails.setVisibility(View.VISIBLE);
+
             // TODO get the main account!
             AccountBean accountBean = walletManager.getAccounts().get(0);
             mImageWallet.setImageBitmap(Blockies.createIcon(accountBean.getPublicKey()));

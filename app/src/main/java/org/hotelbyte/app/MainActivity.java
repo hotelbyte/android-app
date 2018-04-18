@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.transition.Fade;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -20,17 +19,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.hotelbyte.app.base.BaseAppCompatActivity;
 import org.hotelbyte.app.onboarding.OnBoardingActivity;
-import org.hotelbyte.app.parcels.WalletGenParcel;
 import org.hotelbyte.app.profile.ProfileFragment;
 import org.hotelbyte.app.settings.SettingsFragment;
 import org.hotelbyte.app.util.ImageUtils;
 import org.hotelbyte.app.wallet.AccountBean;
 import org.hotelbyte.app.wallet.ImportWalletFragment;
 import org.hotelbyte.app.wallet.NewWalletFragment;
-import org.hotelbyte.app.wallet.WalletCreatorService;
 import org.hotelbyte.app.wallet.WalletFragment;
-
-import static org.hotelbyte.app.settings.Constants.PARCEL_PARAM;
 
 /**
  * Main activity with fragment child
